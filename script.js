@@ -20,8 +20,7 @@ btn.addEventListener("click", () => {
   }
 
   if (step === 3) {
-    text.innerHTML = 
-      "Hug bhi aata hai.<br>Aur hag toh deta hi hoon.";
+    text.innerHTML = "Hug bhi aata hai.<br>Aur hag toh deta hi hoon.";
     fox.classList.add("big-hug");
     btn.style.display = "none";
   }
