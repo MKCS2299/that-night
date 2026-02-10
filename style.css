@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(#cfe9e5, #f7efe5);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene {
+  text-align: center;
+}
+
+.text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.85;
+  transition: opacity 0.6s ease;
+}
+
+.fox-area {
+  height: 220px;
+  position: relative;
+}
+
+.fox {
+  width: 120px;
+  height: 120px;
+  background: #f4a261;
+  border-radius: 60px 60px 50px 50px;
+  margin: auto;
+  position: relative;
+  transition: transform 0.8s ease;
+}
+
+.fox.nervous {
+  animation: tremble 1.6s infinite;
+}
+
+@keyframes tremble {
+  0%,100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+/* ears */
+.ear {
+  width: 30px;
+  height: 40px;
+  background: #f4a261;
+  position: absolute;
+  top: -25px;
+  border-radius: 20px;
+}
+
+.ear.left { left: 10px; transform: rotate(-10deg); }
+.ear.right { right: 10px; transform: rotate(10deg); }
+
+/* arms */
+.arm {
+  width: 25px;
+  height: 50px;
+  background: #e76f51;
+  position: absolute;
+  top: 50px;
+  transition: transform 0.6s ease;
+}
+
+.arm.left { left: -10px; }
+.arm.right { right: -10px; }
+
+.fox.hugging .arm.left {
+  transform: translateX(20px);
+}
+.fox.hugging .arm.right {
+  transform: translateX(-20px);
+}
+
+/* hug squeeze */
+.fox.big-hug {
+  transform: scale(1.1);
+}
+
+/* button */
+button {
+  margin-top: 30px;
+  padding: 10px 22px;
+  border: 1px solid #444;
+  background: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
