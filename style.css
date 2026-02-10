@@ -8,15 +8,11 @@
 
 body {
   font-family: 'Playfair Display', serif;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(#cfe9e5, #f7efe5);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* ===== PETALS (NOW SAFE) ===== */
+/* ===== PETALS (SAFE LAYER) ===== */
 .petals {
   position: fixed;
   inset: 0;
@@ -37,14 +33,14 @@ body {
 /* ===== SCENE ===== */
 .scene {
   text-align: center;
-  width: 100%;
+  padding-top: 60px;
   position: relative;
   z-index: 2;
 }
 
 .text {
   font-size: 1.2rem;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   opacity: 0.85;
 }
 
@@ -94,7 +90,7 @@ body {
   50% { transform: translateX(2px); }
 }
 
-/* EARS */
+/* ===== EARS ===== */
 .ear {
   width: 34px;
   height: 44px;
@@ -115,7 +111,7 @@ body {
 .ear.left { left: 18px; transform: rotate(-12deg); }
 .ear.right { right: 18px; transform: rotate(12deg); }
 
-/* FACE */
+/* ===== FACE ===== */
 .face {
   position: absolute;
   top: 36px;
@@ -165,7 +161,7 @@ body {
   border-radius: 50%;
 }
 
-/* ARMS */
+/* ===== ARMS ===== */
 .arm {
   width: 26px;
   height: 52px;
@@ -180,4 +176,51 @@ body {
 .arm.right { right: -8px; }
 
 .fox.hugging .arm.left {
-  transform: translateX(
+  transform: translateX(26px) rotate(10deg);
+}
+
+.fox.hugging .arm.right {
+  transform: translateX(-26px) rotate(-10deg);
+}
+
+/* ===== TAIL ===== */
+.tail {
+  position: absolute;
+  width: 40px;
+  height: 18px;
+  background: #e76f51;
+  right: -24px;
+  bottom: 20px;
+  border-radius: 20px;
+  transform-origin: left center;
+}
+
+.fox.big-hug .tail {
+  animation: wag 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes wag {
+  from { transform: rotate(10deg); }
+  to { transform: rotate(-20deg); }
+}
+
+/* ===== BIG HUG ===== */
+.fox.big-hug {
+  transform: scale(1.15);
+}
+
+/* ===== BUTTON (ABSOLUTE SAFETY) ===== */
+#teachBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  padding: 12px 26px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  background: white;
+  color: #222;
+  cursor: pointer;
+}
