@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const text = document.getElementById("text");
   const silhouette = document.getElementById("silhouette");
 
-  console.log("Hug Day loaded"); // sanity check
-
   let step = 0;
 
   btn.addEventListener("click", () => {
