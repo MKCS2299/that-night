@@ -1,34 +1,37 @@
-const fox = document.getElementById("fox");
-const btn = document.getElementById("teachBtn");
-const text = document.getElementById("text");
-const silhouette = document.getElementById("silhouette");
+document.addEventListener("DOMContentLoaded", () => {
+  const fox = document.getElementById("fox");
+  const btn = document.getElementById("teachBtn");
+  const text = document.getElementById("text");
+  const silhouette = document.getElementById("silhouette");
 
-let step = 0;
+  console.log("Hug Day loaded"); // sanity check
 
-btn.addEventListener("click", () => {
-  step++;
+  let step = 0;
 
-  if (step === 1) {
-    text.innerHTML = "Okay… arms closer?";
-    fox.classList.remove("nervous");
-    fox.classList.add("hugging");
-    btn.innerText = "Hold a little longer";
-  }
+  btn.addEventListener("click", () => {
+    step++;
 
-  else if (step === 2) {
-    text.innerHTML = "I think I got it.";
-    btn.innerText = "Your turn";
-  }
+    if (step === 1) {
+      text.innerHTML = "Okay… arms closer?";
+      fox.classList.remove("nervous");
+      fox.classList.add("hugging");
+      btn.innerText = "Hold a little longer";
+    }
 
-  else if (step === 3) {
-    btn.style.display = "none";
-    silhouette.style.opacity = "1";
+    else if (step === 2) {
+      text.innerHTML = "I think I got it.";
+      btn.innerText = "Your turn";
+    }
 
-    // silent hug pause
-    setTimeout(() => {
-      text.innerHTML =
-        "Hug bhi aata hai.<br>Aur hag toh deta hi hoon.";
-      fox.classList.add("big-hug");
-    }, 800);
-  }
+    else if (step === 3) {
+      btn.style.display = "none";
+      silhouette.style.opacity = "1";
+
+      setTimeout(() => {
+        text.innerHTML =
+          "Hug bhi aata hai.<br>Aur hag toh deta hi hoon.";
+        fox.classList.add("big-hug");
+      }, 800);
+    }
+  });
 });
