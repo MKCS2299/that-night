@@ -1,8 +1,15 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Playfair Display', serif;
-  background: linear-gradient(#cfe9e5, #f7efe5);
   height: 100vh;
+  background: linear-gradient(#cfe9e5, #f7efe5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,6 +17,7 @@ body {
 
 .scene {
   text-align: center;
+  width: 100%;
 }
 
 .text {
@@ -20,68 +28,146 @@ body {
 }
 
 .fox-area {
-  height: 220px;
+  height: 240px;
   position: relative;
 }
 
+/* ===== FOX BODY ===== */
 .fox {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 130px;
   background: #f4a261;
-  border-radius: 60px 60px 50px 50px;
+  border-radius: 70px 70px 60px 60px;
   margin: auto;
   position: relative;
+  animation: breathe 3.5s ease-in-out infinite;
   transition: transform 0.8s ease;
 }
 
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* nervous tremble */
 .fox.nervous {
   animation: tremble 1.6s infinite;
 }
 
 @keyframes tremble {
-  0%,100% { transform: translateX(0); }
+  0%, 100% { transform: translateX(0); }
   50% { transform: translateX(2px); }
 }
 
-/* ears */
+/* ===== EARS ===== */
 .ear {
-  width: 30px;
-  height: 40px;
+  width: 34px;
+  height: 44px;
   background: #f4a261;
   position: absolute;
-  top: -25px;
-  border-radius: 20px;
+  top: -28px;
+  border-radius: 18px 18px 6px 6px;
 }
 
-.ear.left { left: 10px; transform: rotate(-10deg); }
-.ear.right { right: 10px; transform: rotate(10deg); }
+.ear::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background: #f7c6a3;
+  border-radius: 14px;
+}
 
-/* arms */
+.ear.left {
+  left: 18px;
+  transform: rotate(-12deg);
+}
+
+.ear.right {
+  right: 18px;
+  transform: rotate(12deg);
+}
+
+/* ===== FACE ===== */
+.face {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 70px;
+}
+
+/* eyes */
+.eye {
+  width: 12px;
+  height: 14px;
+  background: #2b2b2b;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  animation: blink 6s infinite;
+}
+
+.eye.left { left: 16px; }
+.eye.right { right: 16px; }
+
+@keyframes blink {
+  0%, 95%, 100% { height: 14px; }
+  96%, 99% { height: 2px; }
+}
+
+/* muzzle */
+.muzzle {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 34px;
+  background: #fff3e8;
+  border-radius: 50%;
+}
+
+/* nose */
+.nose {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+}
+
+/* ===== ARMS ===== */
 .arm {
-  width: 25px;
-  height: 50px;
+  width: 26px;
+  height: 52px;
   background: #e76f51;
   position: absolute;
-  top: 50px;
+  top: 64px;
+  border-radius: 20px;
   transition: transform 0.6s ease;
 }
 
-.arm.left { left: -10px; }
-.arm.right { right: -10px; }
+.arm.left { left: -8px; }
+.arm.right { right: -8px; }
 
 .fox.hugging .arm.left {
-  transform: translateX(20px);
+  transform: translateX(26px) rotate(10deg);
 }
+
 .fox.hugging .arm.right {
-  transform: translateX(-20px);
+  transform: translateX(-26px) rotate(-10deg);
 }
 
-/* hug squeeze */
+/* BIG HUG */
 .fox.big-hug {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
-/* button */
+/* ===== BUTTON ===== */
 button {
   margin-top: 30px;
   padding: 10px 22px;
