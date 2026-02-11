@@ -10,10 +10,9 @@ body {
   font-family: 'Playfair Display', serif;
   min-height: 100vh;
   background: linear-gradient(#cfe9e5, #f7efe5);
-  transition: background 2s ease;
 }
 
-/* ===== PETALS ===== */
+/* ===== PETALS (SAFE LAYER) ===== */
 .petals {
   position: fixed;
   inset: 0;
@@ -31,11 +30,6 @@ body {
   to { background-position: 400px 800px, -300px 600px; }
 }
 
-/* pause petals during hug */
-.scene.hug-moment .petals {
-  animation-play-state: paused;
-}
-
 /* ===== SCENE ===== */
 .scene {
   text-align: center;
@@ -45,15 +39,14 @@ body {
 }
 
 .text {
-  font-size: 1.15rem;
-  margin-bottom: 28px;
+  font-size: 1.2rem;
+  margin-bottom: 24px;
   opacity: 0.85;
-  line-height: 1.6;
 }
 
 /* ===== FOX AREA ===== */
 .fox-area {
-  height: 300px;
+  height: 260px;
   position: relative;
 }
 
@@ -61,14 +54,14 @@ body {
 .silhouette {
   position: absolute;
   left: 50%;
-  top: 40px;
+  top: 30px;
   width: 120px;
   height: 180px;
-  background: rgba(80,80,80,0.18);
+  background: rgba(80,80,80,0.15);
   border-radius: 60px;
   transform: translateX(-50%);
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 1s ease;
 }
 
 /* ===== FOX ===== */
@@ -79,20 +72,15 @@ body {
   border-radius: 70px 70px 60px 60px;
   margin: auto;
   position: relative;
-  transition: transform 1s ease;
+  animation: breathe 3.5s ease-in-out infinite;
+  transition: transform 0.8s ease;
 }
 
-/* far away */
-.fox.far {
-  transform: translateY(120px) scale(0.7);
+@keyframes breathe {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
-/* run in */
-.fox.run-in {
-  transform: translateY(-20px) scale(1.1);
-}
-
-/* nervous */
 .fox.nervous {
   animation: tremble 1.6s infinite;
 }
@@ -143,10 +131,6 @@ body {
   animation: blink 6s infinite;
 }
 
-.fox.big-hug .eye {
-  height: 6px;
-}
-
 .eye.left { left: 16px; }
 .eye.right { right: 16px; }
 
@@ -194,6 +178,7 @@ body {
 .fox.hugging .arm.left {
   transform: translateX(26px) rotate(10deg);
 }
+
 .fox.hugging .arm.right {
   transform: translateX(-26px) rotate(-10deg);
 }
@@ -221,31 +206,21 @@ body {
 
 /* ===== BIG HUG ===== */
 .fox.big-hug {
-  animation: squeeze 1.2s ease-in-out forwards, sway 2s ease-in-out infinite;
+  transform: scale(1.15);
 }
 
-@keyframes squeeze {
-  0% { transform: scale(1.1); }
-  50% { transform: scale(1.18); }
-  100% { transform: scale(1.12); }
-}
-
-@keyframes sway {
-  0% { transform: scale(1.12) rotate(0deg); }
-  50% { transform: scale(1.12) rotate(1deg); }
-  100% { transform: scale(1.12) rotate(0deg); }
-}
-
-/* ===== BUTTON ===== */
+/* ===== BUTTON (ABSOLUTE SAFETY) ===== */
 #teachBtn {
   position: fixed;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
+
   padding: 12px 26px;
   font-size: 1rem;
   border: 1px solid #444;
   background: white;
+  color: #222;
   cursor: pointer;
 }
